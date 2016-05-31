@@ -17,19 +17,16 @@
     "gulp-sass": "^2.3.1",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.3",
-    "gulp-vueify": "0.0.3",
-    "jquery": "^2.2.4",
-    "precommit": "^1.2.0"
+    "precommit": "^1.2.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vue-router": "^0.7.13",
+    "vue": "^1.0.24"
   },
   "dependencies": {
-    "co-fs": "^1.2.0",
     "koa": "^1.2.0",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
-    "minimist": "^1.2.0",
-    "vinyl-source-stream": "^1.1.0",
-    "vue": "^1.0.24",
-    "vue-router": "^0.7.13"
+    "minimist": "^1.2.0"
   },
   "scripts": {
     "test": "eslint server.js routes"
