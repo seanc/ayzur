@@ -1,4 +1,3 @@
-// hello.vue
 <style>
   .red {
     color: #f00;
