@@ -1,3 +1,7 @@
 {
-  "extends": "google"
+  "extends": "google",
+  "rules": {
+    "guard-for-in": 0,
+    "require-jsdoc": 0
+  }
 }

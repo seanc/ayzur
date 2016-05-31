@@ -1,20 +1,11 @@
 # ayzur
 > Custom minecraft website for Ayzur
 
-## Installation
-```shell
-$ npm install seanc/ayzur
-```
-
 ## Usage
-```javascript
-import ayzur from 'ayzur';
+```shell
+$ npm start -- [--port=8080] [--host=localhost]
 ```
-
-## Credits
-| ![seanc][avatar] |
-|:---:|
-| [Sean Wilson][github] |
-
-  [avatar]: https://avatars.githubusercontent.com/u/13725538?v=3&s=125
-  [github]: https://github.com/seanc
+Example:
+```
+$ npm start -- --port=1337 --host='0.0.0.0'
+```
