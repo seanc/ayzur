@@ -1,8 +1,8 @@
 function * home() {
-  this.body = 'Foobar';
+  this.body = 'Hello World';
 }
 
 home.method = 'GET';
-home.path = ['/', '/home'];
+home.path = '/';
 
 module.exports = home;
