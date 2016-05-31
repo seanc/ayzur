@@ -1,19 +1,13 @@
-<style>
-  .red {
-    color: #f00;
-  }
+<style lang="stylus">
+  h1
+    color #c00
 </style>
 
 <template>
-  <h1 class="red">{{msg}}</h1>
+  <h1>Hello World!</h1>
+  <a v-link="{path: '/foo'}">foo</a>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      msg: 'Hello world!'
-    }
-  }
-}
+
 </script>
