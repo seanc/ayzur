@@ -6,9 +6,11 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
 var streamify = require('gulp-streamify');
+var babelify = require('babelify');
 
 gulp.task('javascript', function() {
   browserify('public/scripts/app.js')
+  .transform(babelify, {presets: ['es2015', 'react']})
   .bundle()
   .pipe(source('app.js'))
   .pipe(gulp.dest('public/scripts/dist'))

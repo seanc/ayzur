@@ -1,29 +1,27 @@
-var Vue = require('vue');
-var VueRouter = require('vue-router');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-var hello = Vue.component('hello', {
-  template: 'hello <a v-link="{path: \'/foo\'}">world</a>'
+const Hello = Vue.component('hello', {
+  template: `hello <a v-link="{path: '/foo'}">world</a>`
 });
 
-var world = Vue.component('world', {
-  template: 'world <a v-link="{path: \'/\'}">hello</a>'
+const World = Vue.component('world', {
+  template: `world <a v-link="{path: '/'}">hello</a>`
 });
 
-var App = Vue.extend({});
-var router = new VueRouter();
+const App = Vue.extend({});
+const Router = new VueRouter();
 
-router.map({
+Router.map({
   '/': {
-    component: hello
+    component: Hello
   },
   '/foo': {
-    component: world
+    component: World
   }
 });
 
 /* global document */
-document.addEventListener('DOMContentLoaded', function() {
-  router.start(App, '#app');
-});
+document.addEventListener('DOMContentLoaded', () => Router.start(App, '#app'));
