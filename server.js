@@ -16,6 +16,8 @@ for (const name in routes) {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(routes.notFound);
+
 app.listen(opts.port, opts.host, function() {
   console.log(`Listening on ${opts.host}:${opts.port}`);
 });

@@ -3,9 +3,13 @@
 
 ## Usage
 ```shell
-$ npm start -- [--port=8080] [--host=localhost]
+$ npm start [-- --port=8080 --host=localhost]
 ```
 Example:
 ```
-$ npm start -- --port=1337 --host='0.0.0.0'
+# development
+$ npm start
+
+# specifying port or host to deploy
+$ npm start -- --port=80 --host='0.0.0.0'
 ```
