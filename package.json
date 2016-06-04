@@ -24,7 +24,8 @@
     "gulp-uglify": "^1.5.3",
     "precommit": "^1.2.0",
     "stylus": "^0.54.5",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "vueify": "^8.5.4"
   },
   "dependencies": {
     "koa": "^1.2.0",
@@ -35,6 +36,7 @@
     "vue-router": "^0.7.13"
   },
   "scripts": {
-    "test": "eslint server.js routes"
+    "test": "eslint server.js routes",
+    "prestart": "gulp build"
   }
 }

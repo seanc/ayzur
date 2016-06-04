@@ -1,4 +1,3 @@
-const serve = require('koa-static');
 const koa = require('koa');
 const app = koa();
 const opts = require('minimist')(process.argv.slice(2), {
@@ -15,10 +14,9 @@ for (const name in routes) {
   router[route.method.toLowerCase() || 'get'](route.path, route);
 }
 
-app.use(serve('public'));
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.use(routes.notFound);
+app.use(routes.app);
 
 app.listen(opts.port, opts.host, function() {
   console.log(`Listening on ${opts.host}:${opts.port}`);
