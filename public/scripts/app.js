@@ -5,14 +5,12 @@ Vue.use(VueRouter);
 
 Vue.component('navbar', require('./components/navbar.vue'));
 
-var Home = require('./pages/home.vue');
-
 var App = Vue.extend({});
 var Router = new VueRouter();
 
 Router.map({
   '/': {
-    component: Home
+    component: require('./pages/home.vue')
   }
 });
 
