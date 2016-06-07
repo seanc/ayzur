@@ -1,2 +1,2 @@
-exports.home = require('./home');
-exports.notFound = require('./not-found');
+exports.app = require('./app');
+exports.register = require('./register');
