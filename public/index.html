@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello World</title>
+  <link rel="stylesheet" href="/bower_components/bootswatch-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="/bower_components/respond/dest/respond.min.js"></script>
+  <![endif]-->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootswatch-dist/js/bootstrap.min.js"></script>
   <script src="/scripts/dist/app.js"></script>
 </head>
 <body>
   <div id="app">
+    <navbar></navbar>
     <router-view></router-view>
   </div>
 </body>

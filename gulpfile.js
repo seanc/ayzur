@@ -30,6 +30,6 @@ gulp.task('sass', function() {
 
 gulp.task('build', ['javascript', 'sass']);
 gulp.task('watch', function() {
-  gulp.watch(['public/scripts/**/*.js', '!public/scripts/dist'], ['javascript']);
+  gulp.watch(['public/scripts/**/*.js', '!public/scripts/dist', 'public/scripts/**/*.vue'], ['javascript']);
   gulp.watch('public/styles/**/*.scss', ['sass']);
 });
