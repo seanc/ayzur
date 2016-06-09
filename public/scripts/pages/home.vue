@@ -64,7 +64,12 @@
           </div>
           <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div class="panel panel-default">
-              <div class="panel-heading">Recent Announcements</div>
+              <div class="panel-heading">
+                Recent Announcements
+                <div class="pull-right">
+                  (YYYY-MM-DD)
+                </div>
+              </div>
               <div class="panel-body">
                 <ul class="list-group">
                   <li class="list-group-item">
