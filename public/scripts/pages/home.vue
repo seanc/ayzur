@@ -64,7 +64,12 @@
           </div>
           <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div class="panel panel-default">
-              <div class="panel-heading">Recent Announcements</div>
+              <div class="panel-heading">
+                Recent Announcements
+                <div class="pull-right">
+                  (YYYY-MM-DD)
+                </div>
+              </div>
               <div class="panel-body">
                 <ul class="list-group">
                   <li class="list-group-item">
@@ -98,7 +103,7 @@
     <div class="tab-pane" id="2">
       <div class="well">
         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="panel panel-default">
               <div class="panel-heading">Twitter Feed</div>
               <div class="panel-body">
@@ -124,4 +129,5 @@
 
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
 </script>
