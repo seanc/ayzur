@@ -34,12 +34,12 @@ Router.map({
   },
   '/admin': {
     component: require('./pages/admin/admin.vue'),
-    auth: true
-    // subRoutes: {
-    //   '/auth': {
-    //     component: require('./pages/admin/auth.vue')
-    //   }
-    // }
+    auth: false,
+    subRoutes: {
+      '/settings': {
+        component: require('./pages/admin/settings.vue')
+      }
+    }
   },
   '*': {
     component: require('./pages/not-found.vue')
