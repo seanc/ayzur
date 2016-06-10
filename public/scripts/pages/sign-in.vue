@@ -15,8 +15,8 @@
           <div class="panel-heading">Sign in</div>
           <div class="panel-body">
             <div class="form-group">
-              <label for="username" class="sr-only">Email</label>
-              <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+              <label for="email" class="sr-only">Email</label>
+              <input type="text" id="email" class="form-control" placeholder="Email" required autofocus>
             </div>
             <div class="form-group">
               <label for="password" class="sr-only">Password</label>
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group clearfix">
               <a href="#" class="pull-left">Forgot Password</a>
-              <a v-link="'/sign-up'" class="pull-right">Already have an account?</a>
+              <a v-link="'/sign-up'" class="pull-right">Sign up for an account</a>
             </div>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
           </div>

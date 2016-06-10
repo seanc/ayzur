@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-exports = mongoose.model('User', {
+var User = mongoose.model('User', {
   email: {
     type: String,
     trim: true
@@ -12,3 +12,5 @@ exports = mongoose.model('User', {
   },
   mcVerified: Boolean
 });
+
+module.exports = User;
