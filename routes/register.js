@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('co-bcrypt');
+const validator = require('validator');
 
 function * register() {
   var body = this.request.body;
@@ -7,7 +8,7 @@ function * register() {
   if (!body.hasOwnProperty('email') || !body.hasOwnProperty('password')) {
     this.body = {
       ok: false,
-      message: 'Email and password are required'
+      data: 'Email and password are required'
     };
     return;
   }
@@ -15,12 +16,20 @@ function * register() {
   var email = body.email;
   var password = body.password;
 
+  if (!validator.isEmail(email)) {
+    this.body = {
+      ok: false,
+      data: 'Email is not valid'
+    };
+    return;
+  }
+
   var query = yield User.find({email: email}).exec();
 
   if (query.length) {
     this.body = {
       ok: false,
-      message: 'Email is already in use'
+      data: 'Email is already in use'
     };
     return;
   }

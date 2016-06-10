@@ -3,6 +3,8 @@ var VueRouter = require('vue-router');
 var VueResource = require('vue-resource');
 var VueValidator = require('vue-validator');
 
+var validator = require('validator');
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);
@@ -11,7 +13,7 @@ Vue.component('navbar', require('./components/navbar.vue'));
 
 /* eslint-disable no-useless-escape, max-len */
 Vue.validator('email', function(val) {
-  return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(val);
+  return validator.isEmail(val);
 });
 /* eslint-enable no-useless-escape, max-len */
 

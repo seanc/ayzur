@@ -37,6 +37,7 @@
     "koa-static": "^2.0.0",
     "minimist": "^1.2.0",
     "mongoose": "^4.4.20",
+    "validator": "^5.4.0",
     "vue": "^1.0.24",
     "vue-resource": "^0.7.2",
     "vue-router": "^0.7.13",
