@@ -14,6 +14,9 @@
         <div class="panel panel-default">
           <div class="panel-heading">Sign up</div>
           <div class="panel-body">
+            <alert type="success" v-ref:alert show="false">
+              {{ alertMessage }}
+            </alert>
             <validator name="validation">
               <form novalidate>
                 <div class="form-group" v-bind:class="$validation.email.valid ? 'has-success' : 'has-error'">
@@ -23,14 +26,16 @@
                 </div>
                 <div class="form-group" v-bind:class="$validation.password.valid ? 'has-success' : 'has-error'">
                   <label for="password" class="sr-only">Password</label>
-                  <input type="password" id="password" class="form-control" placeholder="Password" v-model="password" v-validate:password="['required', {minlen: 8}]">
-                  <span class="help-block" v-if="!$validation.password.valid">Password must be at least 8 characters long</span>
+                  <input type="password" id="password" class="form-control" placeholder="Password" v-model="password" v-validate:password="['required', {minlen: 8}, 'matches']">
+                  <span class="help-block" v-if="$validation.password.minlen">Password must be at least 8 characters long</span>
+                  <span class="help-block" v-if="$validation.password.matches">Passwords do not match</span>
+                  <span class="help-block" v-if="$validation.password.required">Password is required</span>
                 </div>
-                <!-- <div class="form-group" v-bind:class="$validation.confirmPassword.valid ? 'has-success' : 'has-error'">
+                <div class="form-group" v-bind:class="!$validation.password.matches ? 'has-success' : 'has-error'">
                   <label for="confirmPassword" class="sr-only">Confirm Password</label>
-                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" v-model="confirmPassword" v-validate:confirmPassword="['required', 'match']">
-                  <span class="help-block" v-if="!$validation.confirmPassword.valid">Passwords do not match</span>
-                </div> -->
+                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" v-model="confirmPassword" v-validate:confirmPassword="['required', 'matches']">
+                  <span class="help-block" v-if="$validation.password.matches">Passwords do not match</span>
+                </div>
               </form>
             </validator>
             <button class="btn btn-success btn-lg btn-block" type="submit" v-on:click.stop.prevent="submit" :disabled="!$validation.valid">Sign up</button>
@@ -42,12 +47,25 @@
 </template>
 
 <script>
+  var alert = require('nr-vue-strap').alert;
   module.exports = {
     data: function() {
       return {
         email: '',
         password: '',
+        confirmPassword: '',
+        alertMessage: ''
       };
+    },
+    validators: {
+      matches: {
+        check: function() {
+          return this.vm.$data.password === this.vm.$data.confirmPassword
+        }
+      }
+    },
+    components: {
+      alert: alert
     },
     methods: {
       submit: function() {
@@ -56,12 +74,21 @@
           password: this.password
         })
         .then(function(res) {
-          console.log(res);
+          if (res.data.ok) {
+            this.updateAlert('success', res.data.data, true);
+            return;
+          }
+          this.updateAlert('warning', res.data.data, true);
+          console.log(res, 'this is a response');
         })
         .catch(function(err) {
-          console.log(err);
-        })
-        console.log(this.email, this.password)
+          this.updateAlert('danger', err.data.data, true);
+        });
+      },
+      updateAlert: function(type, message, show) {
+        this.$refs.alert.type = type;
+        this.alertMessage = message;
+        this.$refs.alert.show = show;
       }
     }
   }
