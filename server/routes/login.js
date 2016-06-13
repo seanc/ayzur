@@ -1,8 +1,8 @@
 var validator = require('validator');
-var User = require('../models/User');
+var User = require('../../models/User');
 var bcrypt = require('co-bcrypt');
 
-function * login() {
+function* login() {
   var body = this.request.body;
 
   if (!body.hasOwnProperty('email') || !body.hasOwnProperty('password')) {

@@ -1,9 +1,9 @@
 
-const User = require('../models/User');
+const User = require('../../models/User');
 const bcrypt = require('co-bcrypt');
 const validator = require('validator');
 
-function * register() {
+function* register() {
   var body = this.request.body;
 
   if (!body.hasOwnProperty('email') || !body.hasOwnProperty('password')) {

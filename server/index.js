@@ -1,6 +1,7 @@
 const koa = require('koa');
 const app = koa();
 const router = require('koa-router')();
+const parser = require('koa-bodyparser');
 const opts = require('./config');
 const routes = require('./routes');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ for (const name in routes) {
 }
 
 app.use(require('./database'));
+app.use(parser());
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(routes.app);
