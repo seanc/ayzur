@@ -14,6 +14,9 @@
         <div class="panel panel-default">
           <div class="panel-heading">Sign in</div>
           <div class="panel-body">
+            <alert type="success" v-ref:alert show="false">
+              {{ alertMessage }}
+            </alert>
             <validator name="validation">
               <form novalidate>
                 <div class="form-group" v-bind:class="$validation.email.valid ? 'has-success' : 'has-error'">
@@ -47,14 +50,19 @@
 
 <script>
   var auth = require('../services/auth.js');
+  var alert = require('nr-vue-strap').alert;
 
   module.exports = {
     data: function() {
       return {
         email: '',
         password: '',
-        rememberMe: false
+        rememberMe: false,
+        alertMessage: ''
       };
+    },
+    components: {
+      alert: alert
     },
     methods: {
       submit: function() {
@@ -62,8 +70,22 @@
           email: this.email,
           password: this.password,
           rememberMe: this.rememberMe
-        }, '/');
-        console.log(this.email, this.password, this.rememberMe);
+        })
+        .then(function(res) {
+          this.$root.loggedIn = auth.check();
+          this.$root.username = res.data.data.username;
+          this.$root.email = res.data.data.email;
+
+          this.$route.router.go('/');
+        }.bind(this))
+        .catch(function(err) {
+          this.updateAlert('danger', err.data.data, true);
+        }.bind(this));
+      },
+      updateAlert: function(type, message, show) {
+        this.$refs.alert.type = type;
+        this.alertMessage = message;
+        this.$refs.alert.show = show;
       }
     }
   }

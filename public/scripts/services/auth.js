@@ -1,43 +1,54 @@
-var router = require('vue-router');
-
 /* global localStorage */
 module.exports = {
   user: {
     authenticated: false
   },
-  login: function(context, details, redirect) {
-    context.$http.post('/api/login', details, function(res) {
-      localStorage.setItem('auth_token', res.auth_token);
+  login: function(context, details) {
+    var _this = this;
 
-      this.user.authenticated = true;
+    return new Promise(function(resolve, reject) {
+      context.$http.post('/api/login', details)
+      .then(function(res) {
+        localStorage.setItem('auth_token', res.auth_token);
 
-      if (redirect) {
-        router.go(redirect);
-      }
-    }).catch(function(err) {
-      context.error = err;
+        _this.user.authenticated = true;
+
+        resolve(res);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
     });
   },
-  register: function(context, details, redirect) {
-    context.$http.post('/api/register', details, function(res) {
-      localStorage.setItem('auth_token', res.auth_token);
+  register: function(context, details) {
+    var _this = this;
+    return new Promise(function(resolve, reject) {
+      context.$http.post('/api/register', details)
+      .then(function(res) {
+        if (res.data.ok) {
+          localStorage.setItem('auth_token', res.auth_token);
 
-      this.user.authenticated = true;
-
-      if (redirect) {
-        router.go(redirect);
-      }
-    }).catch(function(err) {
-      context.err = err;
+          _this.user.authenticated = true;
+        }
+        resolve(res);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
     });
   },
-  logout: function() {
+  logout: function(cb) {
     localStorage.removeItem('auth_token');
     this.user.authenticated = false;
+    cb();
   },
   check: function() {
-    var authToken = localStorage.getItem('auth_token');
+    if (localStorage.getItem('auth_token')) {
+      this.user.authenticated = true;
+    } else {
+      this.user.authenticated = false;
+    }
 
-    this.user.authenticated = (authToken);
+    return this.user.authenticated;
   }
 };

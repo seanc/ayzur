@@ -1,6 +1,5 @@
 const koa = require('koa');
 const app = koa();
-const session = require('koa-session');
 const parser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const opts = require('minimist')(process.argv.slice(2), {
@@ -21,9 +20,6 @@ for (var name in routes) {
   router[route.method.toLowerCase() || 'get'](route.path, route);
 }
 
-app.keys = ['changeme123'];
-
-app.use(session(app));
 app.use(parser());
 app.use(router.routes());
 app.use(router.allowedMethods());

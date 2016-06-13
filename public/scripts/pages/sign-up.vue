@@ -26,16 +26,16 @@
                 </div>
                 <div class="form-group" v-bind:class="$validation.password.valid ? 'has-success' : 'has-error'">
                   <label for="password" class="sr-only">Password</label>
-                  <input type="password" id="password" class="form-control" placeholder="Password" v-model="password" v-validate:password="['required', {minlen: 8}, 'matches']">
+                  <input type="password" id="password" class="form-control" placeholder="Password" v-model="password" v-validate:password="['required', {minlen: 8}]">
                   <span class="help-block" v-if="$validation.password.minlen">Password must be at least 8 characters long</span>
                   <span class="help-block" v-if="$validation.password.matches">Passwords do not match</span>
                   <span class="help-block" v-if="$validation.password.required">Password is required</span>
                 </div>
-                <div class="form-group" v-bind:class="!$validation.password.matches ? 'has-success' : 'has-error'">
+                <!-- <div class="form-group" v-bind:class="!$validation.password.matches ? 'has-success' : 'has-error'">
                   <label for="confirmPassword" class="sr-only">Confirm Password</label>
                   <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" v-model="confirmPassword" v-validate:confirmPassword="['required', 'matches']">
                   <span class="help-block" v-if="$validation.password.matches">Passwords do not match</span>
-                </div>
+                </div> -->
               </form>
             </validator>
             <button class="btn btn-success btn-lg btn-block" type="submit" v-on:click.stop.prevent="submit" :disabled="!$validation.valid">Sign up</button>
@@ -48,6 +48,7 @@
 
 <script>
   var alert = require('nr-vue-strap').alert;
+  var auth = require('../services/auth');
   module.exports = {
     data: function() {
       return {
@@ -69,21 +70,18 @@
     },
     methods: {
       submit: function() {
-        this.$http.post('/api/register', {
+        auth.register(this, {
           email: this.email,
           password: this.password
-        })
-        .then(function(res) {
+        }).then(function(res) {
           if (res.data.ok) {
-            this.updateAlert('success', res.data.data, true);
-            return;
+            return this.updateAlert('success', res.data.data, true);
           }
+
           this.updateAlert('warning', res.data.data, true);
-          console.log(res, 'this is a response');
-        })
-        .catch(function(err) {
-          this.updateAlert('danger', err.data.data, true);
-        });
+        }.bind(this)).catch(function(err) {
+          this.updateAlert('error', err.data.data, true);
+        }.bind(this));
       },
       updateAlert: function(type, message, show) {
         this.$refs.alert.type = type;
