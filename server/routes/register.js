@@ -1,3 +1,4 @@
+
 const User = require('../models/User');
 const bcrypt = require('co-bcrypt');
 const validator = require('validator');

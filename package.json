@@ -37,6 +37,7 @@
     "minimist": "^1.2.0",
     "mongoose": "^4.4.20",
     "nr-vue-strap": "^1.0.13",
+    "rc": "^1.1.6",
     "validator": "^5.4.0",
     "vue": "^1.0.24",
     "vue-resource": "^0.7.2",
@@ -47,6 +48,7 @@
   },
   "scripts": {
     "test": "eslint server.js routes",
-    "prestart": "gulp build"
+    "prestart": "gulp build",
+    "start": "node server"
   }
 }
