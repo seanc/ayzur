@@ -2,6 +2,7 @@
   "extends": "google",
   "rules": {
     "guard-for-in": 0,
-    "require-jsdoc": 0
+    "require-jsdoc": 0,
+    "generator-star-spacing": 0
   }
 }

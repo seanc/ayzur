@@ -32,11 +32,13 @@
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "minimist": "^1.2.0",
+    "rc": "^1.1.6",
     "vue": "^1.0.24",
     "vue-router": "^0.7.13"
   },
   "scripts": {
     "test": "eslint server.js routes",
-    "prestart": "gulp build"
+    "prestart": "gulp build",
+    "start": "node server"
   }
 }
