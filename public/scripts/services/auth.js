@@ -1,4 +1,6 @@
 /* global localStorage */
+var cookie = require('mmm-cookies');
+
 module.exports = {
   user: {
     authenticated: false
@@ -9,8 +11,6 @@ module.exports = {
     return new Promise(function(resolve, reject) {
       context.$http.post('/api/login', details)
       .then(function(res) {
-        localStorage.setItem('auth_token', res.auth_token);
-
         _this.user.authenticated = true;
 
         resolve(res);
@@ -26,8 +26,6 @@ module.exports = {
       context.$http.post('/api/register', details)
       .then(function(res) {
         if (res.data.ok) {
-          localStorage.setItem('auth_token', res.auth_token);
-
           _this.user.authenticated = true;
         }
         resolve(res);
@@ -43,7 +41,7 @@ module.exports = {
     cb();
   },
   check: function() {
-    if (localStorage.getItem('auth_token')) {
+    if (cookie.get('user.auth_token')) {
       this.user.authenticated = true;
     } else {
       this.user.authenticated = false;

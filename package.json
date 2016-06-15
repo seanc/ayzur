@@ -36,6 +36,7 @@
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "minimist": "^1.2.0",
+    "mmm-cookies": "^1.0.2",
     "mongoose": "^4.4.20",
     "nr-vue-strap": "^1.0.13",
     "rc": "^1.1.6",

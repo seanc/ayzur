@@ -20,10 +20,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Support</a></li>
+          <li v-link-active><a v-link="{path: '/', exact: true}">Home <span class="sr-only">(current)</span></a></li>
+          <li v-link-active><a v-link="{path: '/support', exact: true}">Support</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Statistics <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" v-link-active> Statistics <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li class="dropdown-header">Teams</li>
               <li><a href="#">Leaderboard</a></li>
@@ -46,11 +46,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ email }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li v-if="!username"><a href="#">Link Minecraft Account</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -58,3 +56,16 @@
     </div><!-- /.container-fluid -->
   </nav>
 </template>
+
+<script>
+  var user = require('../services/user');
+
+  module.exports = {
+    data: function() {
+      return {
+        email: user.getEmail(),
+        username: user.getUsername()
+      };
+    }
+  };
+</script>

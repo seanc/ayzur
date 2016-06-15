@@ -5,6 +5,7 @@ var VueValidator = require('vue-validator');
 
 var validator = require('validator');
 var auth = require('./services/auth');
+var cookie = require('mmm-cookies');
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -20,16 +21,18 @@ var App = Vue.extend({
   data: function() {
     return {
       loggedIn: false,
-      email: '',
-      username: ''
+      email: cookie.get('user.email'),
+      username: cookie.get('user.username')
     };
   },
   ready: function() {
-    this.$data.loggedIn = auth.check();
     this.$root.data = this.$data;
+    this.$data.loggedIn = auth.check();
+
+    console.log(cookie.get('user.email'));
   }
 });
-var Router = new VueRouter();
+var Router = new VueRouter({linkActiveClass: 'active'});
 
 Router.map({
   '/': {
