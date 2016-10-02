@@ -1,0 +1,133 @@
+<style lang="stylus" scoped>
+  .container
+    margin-top 5em
+  .panel-footer
+    .pull-left
+      vertical-align middle
+</style>
+
+<template>
+  <div class="container">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li class="active"><a href="#1" role="tab" data-toggle="tab">Announcements</a></li>
+      <li><a href="#2" role="tab" data-toggle="tab">Social</a></li>
+      <li><a href="#3" role="tab" data-toggle="tab">Players Online</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="1">
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3>Ayzur Network Released <small>Posted on Friday, June 3rd</small></h3>
+                </div>
+                <div class="panel-body">
+                  <a href="#" class="thumbnail">
+                    <img src="http://placehold.it/900x300" alt="">
+                  </a>
+                  <p>
+                    We have finally completed the closed-beta period and are ready
+                    for official release. We'd like to spend some time thanking a few
+                    people who have been integral in this operation to help create
+                    Ayzur Network. Firstly we'd like to thank x for providing us
+                    hosting, a special thanks to y for helping us with business
+                    marketing and financial management and lastly but most important
+                    of all, z for providing the financial support, without z we would
+                    not be here today.
+                  </p>
+                  <p>
+                    Furthermore, we have made several changes to our game matchmaking
+                    and combat system. During the beta we observed several issues in
+                    regards to item fairness and we've decided to implement a new
+                    algorithm that does not operate on fixed values but is dynamically
+                    calculated based on several conditions. We'd like to keep the
+                    explanation simple for now so we'll spare you the details however
+                    in the future we will be detailing this further.
+                  </p>
+                  <p>
+                    To conclude, again we'd like to thank those who helped us greatly,
+                    and we all wish to see you online soon!
+                  </p>
+                <div class="panel-footer">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <p>Posted by <a href="#">Stimpy</a></p>
+                    </div>
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Recent Announcements
+                <div class="pull-right">
+                  (YYYY-MM-DD)
+                </div>
+              </div>
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="badge">2016-3-5</span>
+                    <a href="#">Alpha underway</a>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="badge">2016-6-3</span>
+                    <a href="#">Ekrum wishes you all...</a>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="badge">2016-6-6</span>
+                    <a href="#">Sean did you did yo...</a>
+                  </li>
+                </ul>
+                <a href="#" class="btn btn-primary btn-block btn-lg">View All</a>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">Twitter Feed</div>
+              <div class="panel-body">
+                <a class="twitter-timeline" href="https://twitter.com/AyzurNetwork"
+                   data-widget-id="739962859799486464"
+                   data-chrome="noheader, nofooter">Tweets by @AyzurNetwork</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="2">
+      <div class="well">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">Twitter Feed</div>
+              <div class="panel-body">
+                <a class="twitter-timeline" href="https://twitter.com/AyzurNetwork"
+                   data-widget-id="739962859799486464"
+                   data-chrome="noheader, nofooter">Tweets by @AyzurNetwork</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">Videos</div>
+              <div class="panel-body">
+                <p class="text-muted text-center">There aren't any videos to view at the moment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+</script>

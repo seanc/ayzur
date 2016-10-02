@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "guard-for-in": 0,
+    "require-jsdoc": 0,
+    "generator-star-spacing": 0,
+    "no-extra-semi": 0
+  }
+}
