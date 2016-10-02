@@ -15,7 +15,7 @@ Object.assign(app.context, {
   db: mongoose,
   ready: false,
   render: nunjucks({
-    ext: 'html', 
+    ext: 'html',
     path: path.join(__dirname, './views')
   })
 });
